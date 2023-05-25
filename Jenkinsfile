@@ -8,9 +8,13 @@ pipeline {
     stages {
         stage('Back-Build') { 
             steps {
-                sh 'cat /usr/share/maven/conf/settings.xml'
                 sh 'mvn -B -DskipTests clean package' 
             }
+        }
+    }
+    post {
+        always {
+           sh 'cat /usr/share/maven/conf/settings.xml' 
         }
     }
 }
